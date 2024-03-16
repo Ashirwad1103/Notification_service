@@ -12,6 +12,10 @@ class NotificationService:
 
 
         notification_handler.send_notification(message=message)
+        return {
+            'status': 200, 
+            'message': "Email sent!"
+        }
 
 class NotificationHandlerService: 
     def send(self, message):

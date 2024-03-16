@@ -20,5 +20,5 @@ class SMSNotificationPayload(BaseModel):
 
 class Message(BaseModel):
     type: ChannelEnums
-    user_id: str
+    # user_id: str
     content: Union[EmailNotificationPayload, SMSNotificationPayload]

@@ -8,7 +8,6 @@ from request_schema import Message
 
 class NotificationHandler(ABC):
     @abstractmethod
-    @celery_app.task
     def send(self, message):
         pass
 
@@ -57,5 +56,5 @@ class NotificationHandlerInterface:
         self.notification_handler = notification_handler 
 
     def send(self, message: Message):
-        self.notification_handler.send(message=message)
+        self.notification_handler.send.delay(message=message)
         pass

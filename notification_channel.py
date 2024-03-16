@@ -13,7 +13,7 @@ class NotificationChannel(ABC):
 
 class Email(NotificationChannel):
     def __init__(self):
-        self.topic = ""
+        pass
 
     def check_is_email_valid(self, email: str):
         pattern = r'^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$'
@@ -26,15 +26,13 @@ class Email(NotificationChannel):
             return 
         
         notication_handler_interface = NotificationHandlerInterface(EmailHandler())
-        notication_handler_interface.notification_handler.send.delay(message)
+        notication_handler_interface.send(message=message)
         
-
-
-        pass
+        return
 
 class SMS(NotificationChannel):
     def __init__(self):
-        self.topic = ""
+        pass
 
     def send_notification(self, message: Message):
         pass
@@ -46,4 +44,4 @@ class NotificationInterface:
 
     def send_notification(self, message: Message):
         self.notification_channel.send_notification(message=message)
-        pass
+        return
